@@ -1,0 +1,106 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+</head>
+<body>
+    {% if current_user.user_type =='admin' %}
+    <form action="/admin_read" method="POST">
+        <input type="text" name="author" id=" author">
+        <input type="text" name="title" id=" title">
+        <input type="submit" value="Add book">
+        
+    </form>
+    {% endif %}
+
+    <table>
+        <tr>
+            <th>book_id</th>
+            <th>title</th>
+            <th>author</th>
+            {% if current_user.user_type =='admin' %}
+            <th>Actions</th>
+            {% endif %}
+        </tr>
+        {% for list in lists %}
+        <tr>
+            <td>{{ list.book_id }}</td>
+            <td>{{ list.author }}</td>
+            <td>{{ list.title }}</td>
+            {% if current_user.user_type =='admin' %}
+            <td>
+                <a href="/admin_delete_book/{{ list.book_id }}">Delete</a>
+                <a href="/admin_update_book/{{ list.book_id }}">Update</a>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html> -->
+
+{% extends 'base.html' %}
+{% block titlehead %}
+{% endblock %}
+{% block body %} 
+<!-- <h1>flask login example</h1>    -->
+{% if current_user.user_type =='admin' %}
+<!--  -->
+<form  action="/admin_read" method="post">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Author</label>
+      <input type="text" class="form-control" id="author" name="author" aria-describedby="emailHelp" placeholder="Enter Author">
+      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Title</label>
+        <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp" placeholder="Enter Title">
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+      <div class="form-group">
+        <!-- <label for="exampleInputEmail1">Email address</label> -->
+        <input type="submit" class="form-control" value="Add Book" aria-describedby="emailHelp" >
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+    
+    <!-- <button type="submit" class="btn btn-primary">Login</button> -->
+  </form>
+    <!-- <form action="/admin_read" method="POST">
+        <input type="text" name="author" id=" author">
+        <input type="text" name="title" id=" title">
+        <input type="submit" value="Add book">
+        
+    </form> -->
+    {% endif %}
+
+    <table  class="table">
+        <thead>
+        <tr style="padding: 10px;">
+            <th>book_id</th>
+            <th>title</th>
+            <th>author</th>
+            {% if current_user.user_type =='admin' %}
+            <th>Actions</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for list in lists %}
+        <tr style="padding: 10px;">
+            <td>{{ list.book_id }}</td>
+            <td>{{ list.author }}</td>
+            <td>{{ list.title }}</td>
+            {% if current_user.user_type =='admin' %}
+            <td>
+                <a href="/admin_delete_book/{{ list.book_id }}">Delete</a>
+                <a href="/admin_update_book/{{ list.book_id }}">Update</a>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

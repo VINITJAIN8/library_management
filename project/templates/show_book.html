@@ -1,0 +1,84 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+</head>
+<body>
+    
+
+    <table>
+        <tr>
+            <th>book_id</th>
+            <th>title</th>
+            <th>availability</th>
+            <th>Actions</th>
+
+        </tr>
+        {% for list in show_book %}
+        <tr>
+            <td>{{ list.book_id }}</td>
+            <td>{{ list.title }}</td>
+            <td>{{ list.availability }}</td>
+            <td>
+                {% if list.availability %}
+                
+                <form action="/borrow_book/{{ list.book_id }}" method="POST">
+
+                    <button type="submit">Borrow</button>
+                </form>
+                {% else %}
+                <form action="/return_book/{{ list.book_id }}" method="POST">
+
+                    <button type="submit">Return</button>
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html> -->
+
+{% extends 'base.html' %}
+{% block titlehead %}
+{% endblock %}
+{% block body %} 
+<!-- <h1>flask login example</h1>    -->
+<table class="table">
+    <thead>
+    <tr style="padding: 10px;">
+        <th>book_id</th>
+        <th>title</th>
+        <th>availability</th>
+        <th>Actions</th>
+
+    </tr>
+</thead>
+    {% for list in show_book %}
+    <tbody>
+    <tr style="padding: 10px;">
+        <td>{{ list.book_id }}</td>
+        <td>{{ list.title }}</td>
+        <td>{{ list.availability }}</td>
+        <td>
+            {% if list.availability %}
+            
+            <form action="/borrow_book/{{ list.book_id }}" method="POST">
+
+                <button type="submit" class="btn btn-primary">Borrow</button>
+            </form>
+            {% else %}
+            <form action="/return_book/{{ list.book_id }}" method="POST">
+
+                <button type="submit" class="btn btn-primary">Return</button>
+            </form>
+            {% endif %}
+        </td>
+    </tr>
+</tbody>
+    {% endfor %}
+</table>
+{% endblock %}
+

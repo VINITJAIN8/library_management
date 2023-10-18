@@ -1,0 +1,41 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/admin_update_book/{{list.book_id}}" method="POST">
+        <input type="text" name="title" id=" title" value="{{list.title}}">
+        <input type="text" name="author" id=" author" value="{{list.author}}">
+        <input type="submit" value="update">
+    </form>
+</body>
+</html> -->
+
+{% extends 'base.html' %}
+{% block titlehead %}
+{% endblock %}
+{% block body %} 
+<!-- <h1>flask login example</h1>    -->
+<form method="post" action="/admin_update_book/{{list.book_id}}">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Update Author</label>
+      <input type="text" class="form-control" name="title" id="title" aria-describedby="emailHelp" placeholder="Update Title" value="{{list.title}}">
+      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Update Title</label>
+        <input type="text" class="form-control" name="author" id="author" aria-describedby="emailHelp" placeholder="Update Author" value="{{list.author}}">
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+      <input type="submit" value="update">
+    
+  </form>
+<!-- <form action="/admin_update_book/{{list.book_id}}" method="POST">
+    <input type="text" name="title" id=" title" value="{{list.title}}">
+    <input type="text" name="author" id=" author" value="{{list.author}}">
+    <input type="submit" value="update">
+</form> -->
+{% endblock %}
